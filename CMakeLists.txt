@@ -21,6 +21,7 @@ endif()
 
 # Dependencies
 find_package(ament_cmake REQUIRED)
+find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 
@@ -31,6 +32,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   msg/MotEncArray.msg
   msg/MotRef.msg
   msg/MotRefArray.msg
+  DEPENDENCIES builtin_interfaces
 )
 
 

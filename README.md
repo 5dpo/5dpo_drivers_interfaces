@@ -10,6 +10,10 @@ required to communicate with the robot drivers of the 5dpo Robotics Team.
 - [Ubuntu 20.04.6 LTS](https://releases.ubuntu.com/focal/)
 - [ROS 2 Foxy](https://docs.ros.org/en/foxy/)
 
+### Dependencies
+
+- [builtin_interfaces](https://index.ros.org/p/builtin_interfaces/)
+
 ## Usage
 
 ### Compilation

@@ -19,33 +19,41 @@ endif()
 
 
 
-# Dependencies
-find_package(ament_cmake REQUIRED)
-find_package(builtin_interfaces REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
+###################################################
+#####  >>> ROBOT OPERATING SYSTEM (ROS) 2 <<< #####
+###################################################
+
+if("$ENV{ROS_VERSION}" STREQUAL "2")
+
+  # Dependencies
+  find_package(ament_cmake REQUIRED)
+  find_package(builtin_interfaces REQUIRED)
+  find_package(rosidl_default_generators REQUIRED)
 
 
 
-# Generate interfaces
-rosidl_generate_interfaces(${PROJECT_NAME}
-  msg/MotEnc.msg
-  msg/MotEncArray.msg
-  msg/MotRef.msg
-  msg/MotRefArray.msg
-  DEPENDENCIES builtin_interfaces
-)
+  # Generate interfaces
+  rosidl_generate_interfaces(${PROJECT_NAME}
+    msg/MotEnc.msg
+    msg/MotEncArray.msg
+    msg/MotRef.msg
+    msg/MotRefArray.msg
+    DEPENDENCIES builtin_interfaces
+  )
 
 
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # uncomment the line when a copyright and license is not present in all source files
-  #set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # uncomment the line when this package is not in a git repo
-  #set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
+  if(BUILD_TESTING)
+    find_package(ament_lint_auto REQUIRED)
+    # the following line skips the linter which checks for copyrights
+    # uncomment the line when a copyright and license is not present in all source files
+    #set(ament_cmake_copyright_FOUND TRUE)
+    # the following line skips cpplint (only works in a git repo)
+    # uncomment the line when this package is not in a git repo
+    #set(ament_cmake_cpplint_FOUND TRUE)
+    ament_lint_auto_find_test_dependencies()
+  endif()
+
+  ament_package()
+
 endif()
-
-ament_package()

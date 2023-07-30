@@ -39,6 +39,10 @@
   <buildtool_depend condition="$ROS_VERSION == 2">ament_cmake</buildtool_depend>
   <buildtool_depend condition="$ROS_VERSION == 2">rosidl_default_generators</buildtool_depend>
 
+  <buildtool_depend condition="$ROS_VERSION == 1">catkin</buildtool_depend>
+
+  <build_depend condition="$ROS_VERSION == 1">message_generation</build_depend>
+
 
 
   <depend condition="$ROS_VERSION == 2">builtin_interfaces</depend>
@@ -46,6 +50,8 @@
 
 
   <exec_depend condition="$ROS_VERSION == 2">rosidl_default_runtime</exec_depend>
+
+  <exec_depend condition="$ROS_VERSION == 1">message_runtime</exec_depend>
 
 
 
@@ -62,6 +68,7 @@
 
   <export>
     <build_type condition="$ROS_VERSION == 2">ament_cmake</build_type>
+    <build_type condition="$ROS_VERSION == 1">catkin</build_type>
   </export>
 
 </package>

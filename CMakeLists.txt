@@ -56,4 +56,50 @@ if("$ENV{ROS_VERSION}" STREQUAL "2")
 
   ament_package()
 
+
+
+  ###################################################
+  #####  >>> ROBOT OPERATING SYSTEM (ROS) 1 <<< #####
+  ###################################################
+
+elseif("$ENV{ROS_VERSION}" STREQUAL "1")
+
+  message(AUTHOR_WARNING "Project version in ROS 1 may be deprecated")
+
+  # Find catkin macros and libraries
+  find_package(catkin REQUIRED COMPONENTS
+    message_generation
+  )
+
+  # Generate messages in the 'msg' folder
+  add_message_files(FILES
+    MotEnc.msg
+    MotEncArrayROS1.msg
+    MotRef.msg
+    MotRefArrayROS1.msg
+  )
+
+  # Generate added messages and services with any dependencies listed here
+  generate_messages(DEPENDENCIES
+    # std_msgs  # Or other packages containing msgs
+  )
+
+  # Catkin specific configuration
+  catkin_package(
+    # INCLUDE_DIRS include
+    # LIBRARIES sdpo_drivers_interfaces
+    CATKIN_DEPENDS message_runtime
+    # DEPENDS system_lib
+  )
+
+
+
+  ##########################
+  #####  !!! ERROR !!! #####
+  ##########################
+
+else()
+
+  message(FATAL_ERROR "No valid version of ROS is installed or environment variables not set")
+
 endif()

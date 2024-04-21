@@ -36,8 +36,11 @@ if("$ENV{ROS_VERSION}" STREQUAL "2")
   rosidl_generate_interfaces(${PROJECT_NAME}
     msg/MotEnc.msg
     msg/MotEncArray.msg
+    msg/MotData.msg
+    msg/MotDataArray.msg
     msg/MotRef.msg
     msg/MotRefArray.msg
+    srv/SetMotorsPWM.srv
     DEPENDENCIES builtin_interfaces
   )
 
@@ -75,14 +78,19 @@ elseif("$ENV{ROS_VERSION}" STREQUAL "1")
   add_message_files(FILES
     MotEnc.msg
     MotEncArrayROS1.msg
+    MotData.msg
+    MotDataArrayROS1.msg
     MotRef.msg
     MotRefArrayROS1.msg
   )
 
-  # Generate added messages and services with any dependencies listed here
-  generate_messages(DEPENDENCIES
-    # std_msgs  # Or other packages containing msgs
+  # Generate services in the 'srv' folder
+  add_service_files(FILES
+    SetMotorsPWM.srv
   )
+
+  # Generate added messages and services with any dependencies listed here
+  generate_messages()
 
   # Catkin specific configuration
   catkin_package(
